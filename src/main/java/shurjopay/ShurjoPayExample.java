@@ -22,7 +22,7 @@ public class ShurjoPayExample{
         checkoutInfo.put("token",ShurjoPay.getToken());
         checkoutInfo.put("amount", "420" );
         checkoutInfo.put("order_id", "sp315689");
-        checkoutInfo.put("store_id", "1");
+        checkoutInfo.put("store_id", "");
         checkoutInfo.put("currency", "BDT");
         checkoutInfo.put("return_url", Settings.merchantReturnUrl);
         checkoutInfo.put("cancel_url", Settings.merchantCancelUrl);

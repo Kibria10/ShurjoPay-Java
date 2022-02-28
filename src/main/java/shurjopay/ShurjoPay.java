@@ -57,34 +57,13 @@ public class ShurjoPay {
         return token;
     }
 
-
     public static JSONObject executeCheckout(JSONObject checkoutInfo) throws IOException{
         int flag = 0;
-        String order_id = (String) checkoutInfo.get("order_id");
-        if (order_id.equals(null) || order_id.equals("")){
-            flag =1;
-            System.out.println("Please Provide Order ID");
+        if(checkoutInfo.keys()==null){
+        flag = 1;
+            System.out.println("Checkout Payload Fields can not be Null and Must Contain a Value.");
+            //checkout parameters logic needs to be fixed ***************************************
         }
-
-        String amount = (String) checkoutInfo.get("amount");
-        int amountInt = Integer.parseInt(amount); //need to implement a try catch on this later
-        if (amountInt < 0 || amount.equals(null) || amount.equals("")) {
-            flag = 2;
-            System.out.println("Please Provide Valid Amount");
-        }
-
-        String return_url = (String) checkoutInfo.get("return_url");
-        if(return_url.equals(null) || return_url.equals("")){
-            flag =3;
-            System.out.println("Please Provide Valid Return URL");
-        }
-
-        String cancel_url = (String) checkoutInfo.get("return_url");
-        if(cancel_url.equals(null) || cancel_url.equals("")){
-            flag =4;
-            System.out.println("Please Provide Valid Cancel URL");
-        }
-
         ///NOW FOR THE ACTUAL PART///
         String responseDataOfCheckOut = "";
         if (flag == 0){
@@ -122,7 +101,7 @@ public class ShurjoPay {
             }
         }
         JSONObject JSONResponseData = new JSONObject(responseDataOfCheckOut);
-        String executeCheckoutUrl = JSONResponseData.get("checkout_url").toString();
+        String executeCheckoutUrl = JSONResponseData.getString("checkout_url");
         if (Settings.checkoutUrl!=null){
             try {
                 URI uri = new URI(executeCheckoutUrl);
