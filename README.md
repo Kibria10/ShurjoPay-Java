@@ -16,12 +16,25 @@ To integrate ShurjoPay you need few credentials to access shurjopay:
 ```
 
 
-> 📝 **NOTE** For shurjoPay version 2 live engine integration all necessary credential will be given to merchant after subscription completed on shurjoPay gateway.
+> 📝 **NOTE** For ShurjoPay version 2 live engine integration all necessary credential will be given to merchant after subscription completed on shurjoPay gateway.
 
 ---
+```
+Step 1:
+Install the "ShurjoPay Plugin.jar" in your project library.
+
+Step 2:
+import shurjopay.Settings;
+import shurjopay.ShurjoPay;
+
+Step 3:
 
 
-### Postmane Documentations
+
+```
+
+
+### Postman Documentations
 
     This document will illustrate the overall request and response flow.
     URL : https://documenter.getpostman.com/view/6335853/U16dS8ig	

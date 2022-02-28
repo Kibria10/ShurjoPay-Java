@@ -11,7 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class ShurjoPay extends Settings {
+public class ShurjoPay {
 
     public static String getToken() throws IOException{
         JSONObject credential = new JSONObject();
@@ -123,7 +123,7 @@ public class ShurjoPay extends Settings {
         }
         JSONObject JSONResponseData = new JSONObject(responseDataOfCheckOut);
         String executeCheckoutUrl = JSONResponseData.get("checkout_url").toString();
-        if (checkoutUrl!=null){
+        if (Settings.checkoutUrl!=null){
             try {
                 URI uri = new URI(executeCheckoutUrl);
                 java.awt.Desktop.getDesktop().browse(uri);
