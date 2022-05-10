@@ -91,7 +91,7 @@ public class ShurjoPay {
                         response.append(responseLine.trim());
                     }
                     responseDataOfCheckOut = response.toString();
-                    System.out.println(responseDataOfCheckOut);
+//                    System.out.println(responseDataOfCheckOut);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -120,7 +120,7 @@ public class ShurjoPay {
         String jsonOrderIdToString = jsonOrderId.toString(); // turning the json object into string to pass it on the os.write()
         URL obj = new URL(Settings.verificationUrl);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-        connection.setRequestProperty("Authorization", "Bearer " + getToken());
+        connection.setRequestProperty("Authorization", "Bearer " + getToken().getString("token"));
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestMethod("POST");
         connection.setConnectTimeout(30000);
@@ -156,7 +156,8 @@ public class ShurjoPay {
         responseRefining.delete(responseDataOfVerification.length() - 1, responseDataOfVerification.length());
         responseRefining.delete(0, 1);
 
-        JSONObject JsonResponseData = new JSONObject(responseRefining.toString());
-        return JsonResponseData;
+        JSONObject JsonResponseDataOfVerifyOrder = new JSONObject(responseRefining.toString());
+        System.out.println(JsonResponseDataOfVerifyOrder);
+        return JsonResponseDataOfVerifyOrder;
     }
 }
