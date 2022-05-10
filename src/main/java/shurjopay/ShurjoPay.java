@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class ShurjoPay {
 
-    public static String getToken() throws IOException{
+    public static JSONObject getToken() throws IOException{
         JSONObject credential = new JSONObject();
         credential.put("username", Settings.username );
         credential.put("password", Settings.password);
@@ -52,9 +52,8 @@ public class ShurjoPay {
         else {
             System.out.println("Something went wrong!");
         }
-        JSONObject JSONResponseData = new JSONObject(responseDataOfGetToken);
-        String token =JSONResponseData.getString("token");
-        return token;
+        JSONObject JSONResponseDataOfGetToken = new JSONObject(responseDataOfGetToken);
+        return  JSONResponseDataOfGetToken;
     }
 
     public static JSONObject executeCheckout(JSONObject checkoutInfo) throws IOException{
@@ -85,13 +84,14 @@ public class ShurjoPay {
             //get response
             if (responseCode==200) {
                 try (BufferedReader br = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
                     StringBuilder response = new StringBuilder();
                     String responseLine = null;
                     while ((responseLine = br.readLine()) != null) {
                         response.append(responseLine.trim());
                     }
                     responseDataOfCheckOut = response.toString();
+                    System.out.println(responseDataOfCheckOut);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

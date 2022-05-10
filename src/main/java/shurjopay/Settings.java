@@ -10,8 +10,8 @@ public class Settings {
     protected static String checkoutUrl = "https://sandbox.shurjopayment.com/api/secret-pay"; //"https://engine.shurjopayment.com/api/secret-pay";
     protected static String verificationUrl = "https://www.sandbox.shurjopayment.com/api/verification"; //"https://www.engine.shurjopayment.com/api/verification";
     protected static String prefix = "sp"; //<Live server credential will be provided by shurjoPay team>
-    protected static String merchantReturnUrl = "https://www.sandbox.shurjopayment.com/response"; //<YourDomainName/Custom_return_url>
-    protected static String merchantCancelUrl = "https://www.sandbox.shurjopayment.com/response"; //<YourDomainName/Custom_cancel_url>
+    protected static String merchantReturnUrl = "https://www.sandbox.shurjopayment.com/response"; //<YourDomainName.com/Custom_return_url>
+    protected static String merchantCancelUrl = "https://www.sandbox.shurjopayment.com/response"; //<YourDomainName.com/Custom_cancel_url>
 
     public static void configure(JSONObject configCredentials){
         if(configCredentials.keys()==null) {
