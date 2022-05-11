@@ -4,7 +4,9 @@ import java.io.IOException;
 
 public class ShurjoPayExample{
     public static void main(String[]args) throws IOException {
+
 //use-case:1
+        Boolean sandbox = true;
         JSONObject configCredentials = new JSONObject();
         configCredentials.put("username", "");
         configCredentials.put("password", "");
@@ -15,7 +17,7 @@ public class ShurjoPayExample{
         configCredentials.put("merchantReturnUrl", "");
         configCredentials.put("merchantCancelUrl", "");
 
-        //Settings.configure(configCredentials); //<--- EXECUTING (Only execute this after getting your live API credentials from ShurjoPay. By default, sandbox credentials will execute.)
+        Settings.configure(sandbox, configCredentials); //<--- EXECUTING (Put sandbox to false and set the configCredentials after getting your live API credentials from ShurjoPay. By default, sandbox credentials will execute.)
 //use-case:2
         JSONObject checkoutInfo = new JSONObject(); //make a json object and put the necessary checkout data parameters inside it.
         JSONObject getTokenAndStoreId = ShurjoPay.getToken(); //<---EXECUTING
@@ -43,7 +45,7 @@ public class ShurjoPayExample{
 //use-case:3
         String orderId = checkoutResponse.getString("sp_order_id");
         //merchant needs to pass the orderId manually after payment.
-        JSONObject getVerificationResponse = ShurjoPay.verifyOrder(orderId); //<--- EXECUTING
+        JSONObject getVerificationResponse = ShurjoPay.verifyOrder(orderId); //<--- EXECUTING (You can use the getVerificationResponse variable to show the necessary data on your return_url or cancel_url)
         //System.out.println(getVerificationResponse);
     }
 }
