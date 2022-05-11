@@ -91,7 +91,6 @@ public class ShurjoPay {
                         response.append(responseLine.trim());
                     }
                     responseDataOfCheckOut = response.toString();
-//                    System.out.println(responseDataOfCheckOut);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -157,7 +156,6 @@ public class ShurjoPay {
         responseRefining.delete(0, 1);
 
         JSONObject JsonResponseDataOfVerifyOrder = new JSONObject(responseRefining.toString());
-        System.out.println(JsonResponseDataOfVerifyOrder);
         return JsonResponseDataOfVerifyOrder;
     }
 }
